@@ -41,9 +41,9 @@ const publi9 = new PublicacionVenta("cuaderno","rallado",user1,400,5)
 
 const nuevasPublicaciones = [publi6,publi7,publi8,publi9]
 
-// nuevasPublicaciones.forEach((Publicaciones =>{
-//     console.log(Publicaciones)
-// }))
+nuevasPublicaciones.forEach((Publicaciones =>{
+    console.log(Publicaciones)
+}))
 
 // const publiActiva = nuevasPublicaciones.filter(p => p.estaActiva())
 // console.log(publiActiva)
@@ -51,9 +51,9 @@ const nuevasPublicaciones = [publi6,publi7,publi8,publi9]
 // const primeraPubli = nuevasPublicaciones.find(p => p.autor.nombre === user1.nombre)
 // console.log(primeraPubli)
 
-// const repoPubli = new RepositorioPublicaciones()
-// nuevasPublicaciones.forEach(p => repoPubli.agregarPublicaciones(p))
-// console.log(repoPubli)
+const repoPubli = new RepositorioPublicaciones()
+nuevasPublicaciones.forEach(p => repoPubli.agregarPublicaciones(p))
+console.log(repoPubli)
 
 const busquedaPorUser = new RepositorioPublicaciones()
 nuevasPublicaciones.forEach(p => busquedaPorUser.buscarPorUsuario(p.autor.nombre))
