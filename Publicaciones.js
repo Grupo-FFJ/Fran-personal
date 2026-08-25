@@ -16,6 +16,6 @@ export class Publicaciones{
     }
 }
 
-const user1 = new Usuario("Franco","fran@gmail.com")
-const publi6 = new Publicaciones("zzzz","ssss",user1)
-console.log(publi6)
+// const user1 = new Usuario("Franco","fran@gmail.com")
+// const publi6 = new Publicaciones("zzzz","ssss",user1)
+// console.log(publi6)

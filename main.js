@@ -1,6 +1,8 @@
 import { Publicaciones } from "./Publicaciones.js";
 import { Usuario } from "./Usuario.js"
 import { RepositorioPublicaciones } from "./RepositorioPublicaciones.js";
+import { PublicacionVenta } from "./PublicacionVenta.js";
+import { PublicacionServicio } from "./PublicacionServicio.js";
 // const publi1 = new Publicaciones("libro","matematica","franco")
 // const publi2 = new Publicaciones("lapicera","color azul","fede")
 // const publi3 = new Publicaciones("cuadernillo","cuadriculado","joaquin")
@@ -32,31 +34,32 @@ const user1 = new Usuario("Franco","fran@gmail.com")
 const user2 = new Usuario("fede","fede@gmail.com")
 const user3 = new Usuario("rodrigo","rodrigo@gmail.com")
 
-const publi6 = new Publicaciones("lapicera","color azul",user1)
-const publi7 = new Publicaciones("cuadernillo","cuadriculado",user2)
-const publi8 = new Publicaciones("lapiz","color rojo",user3)
-const publi9 = new Publicaciones("cuaderno","rallado",user1)
+const publi6 = new PublicacionServicio("lapicera","color azul",user1,"presencial",30)
+const publi7 = new PublicacionServicio("cuadernillo","cuadriculado",user2,"virtual",60)
+const publi8 = new PublicacionVenta("lapiz","color rojo",user3,300,3)
+const publi9 = new PublicacionVenta("cuaderno","rallado",user1,400,5)
 
 const nuevasPublicaciones = [publi6,publi7,publi8,publi9]
 
-nuevasPublicaciones.forEach((Publicaciones =>{
-    console.log(Publicaciones.mostrarResumen())
-}))
+// nuevasPublicaciones.forEach((Publicaciones =>{
+//     console.log(Publicaciones)
+// }))
 
-const publiActiva = nuevasPublicaciones.filter(p => p.estaActiva())
-console.log(publiActiva)
+// const publiActiva = nuevasPublicaciones.filter(p => p.estaActiva())
+// console.log(publiActiva)
 
-const primeraPubli = nuevasPublicaciones.find(p => p.autor.nombre === user1.nombre)
-console.log(primeraPubli)
+// const primeraPubli = nuevasPublicaciones.find(p => p.autor.nombre === user1.nombre)
+// console.log(primeraPubli)
 
-const repoPubli = new RepositorioPublicaciones()
-nuevasPublicaciones.forEach(p => repoPubli.agregarPublicaciones(p))
-console.log(repoPubli)
+// const repoPubli = new RepositorioPublicaciones()
+// nuevasPublicaciones.forEach(p => repoPubli.agregarPublicaciones(p))
+// console.log(repoPubli)
 
-// nuevasPublicaciones.forEach(p => {
+const busquedaPorUser = new RepositorioPublicaciones()
+nuevasPublicaciones.forEach(p => busquedaPorUser.buscarPorUsuario(p.autor.nombre))
+console.log(busquedaPorUser)
 
-//     console.log(buscarUsuario)
-// })
 
-// // console.log(buscarUsuario)
+
+
 
