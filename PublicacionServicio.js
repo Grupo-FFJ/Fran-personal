@@ -1,4 +1,4 @@
-import { Publicaciones } from "./Publicaciones.js";
+import { Publicaciones } from "./publicacion.js";
 
 export class PublicacionServicio extends Publicaciones{
     constructor(titulo, descripcion, autor, modalidad,duracion){
