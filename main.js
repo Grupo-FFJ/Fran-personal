@@ -60,13 +60,13 @@ nuevasPublicaciones.forEach((Publicacion =>{
 // nuevasPublicaciones.forEach(p => busquedaPorUser.buscarPorUsuario(p.autor.nombre))
 // console.log(busquedaPorUser)
 
-const publi = new Publicacion("fdssss","dsdsddsd","franco")
-function validarPublicacion(publicacion,reglas){
-    if((publicacion.titulo).length>=reglas.minTitulo && (publicacion.titulo).length<=reglas.maxTitulo){
-        return true
-    }
+// const publi = new Publicacion("fdssss","dsdsddsd","franco")
+// function validarPublicacion(publicacion,reglas){
+//     if((publicacion.titulo).length>=reglas.minTitulo && (publicacion.titulo).length<=reglas.maxTitulo){
+//         return true
+//     }
 
-}
+// }
 
 
 
