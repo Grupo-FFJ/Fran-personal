@@ -1,4 +1,4 @@
-import { Publicacion } from "./Publicacion.js";
+import { Publicacion } from "./publicacion.js";
 import { Usuario } from "./Usuario.js"
 import { RepositorioPublicaciones } from "./RepositorioPublicaciones.js";
 import { PublicacionVenta } from "./PublicacionVenta.js";
@@ -41,8 +41,8 @@ const publi9 = new PublicacionVenta("cuaderno","rallado",user1,400,5)
 
 const nuevasPublicaciones = [publi6,publi7,publi8,publi9]
 
-nuevasPublicaciones.forEach((Publicaciones =>{
-    console.log(Publicaciones)
+nuevasPublicaciones.forEach((Publicacion =>{
+    console.log(Publicacion)
 }))
 
 // const publiActiva = nuevasPublicaciones.filter(p => p.estaActiva())
