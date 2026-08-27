@@ -1,4 +1,4 @@
-import { Publicacion } from "./Publicacion.js";
+import { Publicacion } from "./publicacion.js";
 import { Usuario } from "./Usuario.js"
 import { RepositorioPublicaciones } from "./RepositorioPublicaciones.js";
 import { PublicacionVenta } from "./PublicacionVenta.js";
