@@ -67,6 +67,39 @@ nuevasPublicaciones.forEach((Publicacion =>{
 //     }
 
 // }
+const repositorio = new RepositorioPublicaciones()
+
+// repositorio.on("publicacionAgregada",(p)=>{
+//     console.log(`Nueva publicaion: ${p.mostrarResumen()}`)
+// })
+
+//parte 3
+
+function publicarConDemora(publicacion,callback){
+    console.log("procesando publicacion")
+    setTimeout(() => {
+        callback(publicacion)
+    }, 3000)
+}
+publicarConDemora(publi6,(publicacion)=>{
+    repositorio.agregarPublicaciones(publicacion)
+})
+console.log("imprimiendo antes de la demora")
 
 
+//parte 3.5
+function publicarConDemoraAsync(publicacion){
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve(`${publicacion} lista`)
+        }, 3000)
+    })
+}
 
+async function mainPubli(){
+    const publicacion = await publicarConDemoraAsync(publi6)
+    repositorio.agregarPublicaciones(publicacion)
+    console.log("mensaje con demora")
+}
+
+mainPubli()
