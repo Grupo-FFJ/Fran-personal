@@ -45,20 +45,28 @@ nuevasPublicaciones.forEach((Publicacion =>{
     console.log(Publicacion)
 }))
 
+
 // const publiActiva = nuevasPublicaciones.filter(p => p.estaActiva())
 // console.log(publiActiva)
 
 // const primeraPubli = nuevasPublicaciones.find(p => p.autor.nombre === user1.nombre)
 // console.log(primeraPubli)
 
-const repoPubli = new RepositorioPublicaciones()
-nuevasPublicaciones.forEach(p => repoPubli.agregarPublicaciones(p))
-console.log(repoPubli)
+// const repoPubli = new RepositorioPublicaciones()
+// nuevasPublicaciones.forEach(p => repoPubli.agregarPublicaciones(p))
+// console.log(repoPubli)
 
-const busquedaPorUser = new RepositorioPublicaciones()
-nuevasPublicaciones.forEach(p => busquedaPorUser.buscarPorUsuario(p.autor.nombre))
-console.log(busquedaPorUser)
+// const busquedaPorUser = new RepositorioPublicaciones()
+// nuevasPublicaciones.forEach(p => busquedaPorUser.buscarPorUsuario(p.autor.nombre))
+// console.log(busquedaPorUser)
 
+// const publi = new Publicacion("fdssss","dsdsddsd","franco")
+// function validarPublicacion(publicacion,reglas){
+//     if((publicacion.titulo).length>=reglas.minTitulo && (publicacion.titulo).length<=reglas.maxTitulo){
+//         return true
+//     }
+
+// }
 const repositorio = new RepositorioPublicaciones()
 
 // repositorio.on("publicacionAgregada",(p)=>{
