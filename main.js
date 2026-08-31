@@ -1,4 +1,4 @@
-import { Publicaciones } from "./publicacion.js";
+import { Publicacion } from "./publicacion.js";
 import { Usuario } from "./Usuario.js"
 import { RepositorioPublicaciones } from "./RepositorioPublicaciones.js";
 import { PublicacionVenta } from "./PublicacionVenta.js";
@@ -41,8 +41,8 @@ const publi9 = new PublicacionVenta("cuaderno","rallado",user1,400,5)
 
 const nuevasPublicaciones = [publi6,publi7,publi8,publi9]
 
-nuevasPublicaciones.forEach((Publicaciones =>{
-    console.log(Publicaciones)
+nuevasPublicaciones.forEach((Publicacion =>{
+    console.log(Publicacion)
 }))
 
 // const publiActiva = nuevasPublicaciones.filter(p => p.estaActiva())
@@ -59,7 +59,39 @@ const busquedaPorUser = new RepositorioPublicaciones()
 nuevasPublicaciones.forEach(p => busquedaPorUser.buscarPorUsuario(p.autor.nombre))
 console.log(busquedaPorUser)
 
+const repositorio = new RepositorioPublicaciones()
+
+// repositorio.on("publicacionAgregada",(p)=>{
+//     console.log(`Nueva publicaion: ${p.mostrarResumen()}`)
+// })
+
+//parte 3
+
+function publicarConDemora(publicacion,callback){
+    console.log("procesando publicacion")
+    setTimeout(() => {
+        callback(publicacion)
+    }, 3000)
+}
+publicarConDemora(publi6,(publicacion)=>{
+    repositorio.agregarPublicaciones(publicacion)
+})
+console.log("imprimiendo antes de la demora")
 
 
+//parte 3.5
+function publicarConDemoraAsync(publicacion){
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve(`${publicacion} lista`)
+        }, 3000)
+    })
+}
 
+async function mainPubli(){
+    const publicacion = await publicarConDemoraAsync(publi6)
+    repositorio.agregarPublicaciones(publicacion)
+    console.log("mensaje con demora")
+}
 
+mainPubli()

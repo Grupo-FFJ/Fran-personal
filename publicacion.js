@@ -1,5 +1,5 @@
 import { Usuario } from "./Usuario.js"
-export class Publicaciones{
+export class Publicacion{
     constructor(titulo, descripcion, autor){
         this.titulo = titulo
         this.descripcion = descripcion
@@ -14,8 +14,8 @@ export class Publicaciones{
     estaActiva(){
         return this.activa
     }
+    diasPublicada(){
+        const ms = new Date() - this.fechaPublicacion
+        return Math.floor(ms / (1000 * 60 * 60 * 24))
+    }
 }
-
-// const user1 = new Usuario("Franco","fran@gmail.com")
-// const publi6 = new Publicaciones("zzzz","ssss",user1)
-// console.log(publi6)
