@@ -23,5 +23,11 @@ export class RepositorioPublicaciones extends EventEmitter{
         }
         return contador
     }
+    listarResumen(){
+        return this.publicaciones.map()
+    }
+    filtrarPorTipo(clase){
+        return this.publicaciones.filter(publicacion => publicacion instanceof clase)
+    }
 }
 
