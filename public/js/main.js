@@ -131,3 +131,4 @@ const id = Number(tarjeta.dataset.id);
 console.log(id, boton.dataset.accion);
 }
 lista.addEventListener("click", manejarAccion);
+
