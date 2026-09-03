@@ -12,6 +12,7 @@ const camposEspecificos = document.getElementById("campos-especificos")
 const ayudaEmail = document.getElementById("ayuda-email")
 const email = document.getElementById("email")
 const formulario = document.getElementById("formulario")
+const lista = document.getElementById("lista-publicaciones")
 
 function observarEvento(evento) {
   console.table({
@@ -75,6 +76,33 @@ function crearPublicacionDesdeFormulario() {
     Number(document.querySelector("#duracion").value)
   );
 }
+function agregarTarjeta(publicacion){
+  const tarjeta = document.createElement("article")
+  tarjeta.classList.add("tarjeta")
+  tarjeta.setAttribute("data-id", Date.now())
+  const titulo = document.createElement("h3")
+  titulo.textContent = publicacion.titulo
+  const descripcion = document.createElement("p")
+  descripcion.textContent = publicacion.descripcion
+  const estado = document.createElement("p")
+  estado.textContent = publicacion.activa
+  const boton = document.createElement("button")
+  boton.textContent = "Dar de baja"
+  boton.setAttribute("data-accion","baja")
+  function manejarBaja(evento){
+    console.log(evento.type, evento.target)
+    publicacion.darDeBaja()
+    estado.textContent = "inactiva"
+    boton.disabled = true
+  }
+  // boton.addEventListener("click",manejarBaja)
+  const botonDes = document.createElement("button")
+  botonDes.textContent = "Destacar"
+  botonDes.setAttribute("data-accion","destacar")
+  tarjeta.append(titulo,descripcion,estado,boton,botonDes)
+  lista.appendChild(tarjeta)
+}
+
 function manejarEnvio(evento) {
   evento.preventDefault();
   const publicacion = crearPublicacionDesdeFormulario();
@@ -85,3 +113,21 @@ function manejarEnvio(evento) {
   actualizarVistaPrevia();
 }
 formulario.addEventListener("submit", manejarEnvio);
+
+
+
+function observarClick(evento) {
+console.log("target", evento.target);
+console.log("currentTarget", evento.currentTarget);
+}
+lista.addEventListener("click", observarClick);
+
+// TP 9 PARTE 3
+function manejarAccion(evento) {
+const boton = evento.target.closest("button[data-accion]");
+if (!boton || !lista.contains(boton)) return;
+const tarjeta = boton.closest("[data-id]");
+const id = Number(tarjeta.dataset.id);
+console.log(id, boton.dataset.accion);
+}
+lista.addEventListener("click", manejarAccion);
