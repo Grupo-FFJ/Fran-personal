@@ -7,6 +7,9 @@ export class Publicacion{
         this.fechaPublicacion = new Date()
         this.activa = true
     }
+    get resumen(){
+        return `Autor:${this.autor} - Titulo:${this.titulo} - Estado:${this.activa}`
+    }
 
     mostrarResumen(){
         return `${this.titulo} - ${this.autor.nombre}`

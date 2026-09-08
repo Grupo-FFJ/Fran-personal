@@ -26,11 +26,11 @@ titulo.addEventListener("input", observarEvento);
 tipo.addEventListener("change", observarEvento);
 
 //PARTE 3
-function actualizarVistaPrevia() {
-  const nombre = autor.value || "Autor";
-  const texto = titulo.value || "Sin título";
-  vistaPrevia.textContent = `${texto} — ${nombre} (${tipo.value})`;
-}
+// function actualizarVistaPrevia() {
+//   const nombre = autor.value || "Autor";
+//   const texto = titulo.value || "Sin título";
+//   vistaPrevia.textContent = `${texto} — ${nombre} (${tipo.value})`;
+// }
 titulo.addEventListener("input", actualizarVistaPrevia);
 autor.addEventListener("input", actualizarVistaPrevia);
 tipo.addEventListener("change", actualizarVistaPrevia);
@@ -131,4 +131,51 @@ const id = Number(tarjeta.dataset.id);
 console.log(id, boton.dataset.accion);
 }
 lista.addEventListener("click", manejarAccion);
+//=======================================================================
+//TP 10 Parte 1
+function esperar(ms) {
+  return new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
+}
 
+console.log(esperar(1000))
+
+//TP 10 Parte 2
+async function cargarPublicaciones() {
+  estado.textContent = "Cargando publicaciones...";
+  botonActualizar.disabled = true;
+  const respuesta = await fetch("/api/publicaciones");
+  if (!respuesta.ok) {
+    throw new Error("La respuesta no fue exitosa");
+  }
+  const datos = await respuesta.json();
+  repositorio.cargarDesde(datos);
+  renderizarPublicaciones();
+  estado.textContent = `${datos.length} publicaciones recibidas`;
+  botonActualizar.disabled = false;
+}
+
+//TP 10 Parte 4
+const errorTitulo = document.getElementById("errorTitulo")
+function validarTitulo(mostrarError = true) {
+  const valido = titulo.value.trim().length >= 5;
+  titulo.classList.toggle("valido", valido);
+  titulo.classList.toggle("invalido", !valido && mostrarError);
+  errorTitulo.textContent = !valido && mostrarError
+    ? "Ingrese al menos 5 caracteres" : "";
+  return valido;
+}
+ 
+titulo.addEventListener("input", () => validarTitulo(false));
+titulo.addEventListener("blur", () => validarTitulo(true));
+
+//TP 10 Parte 5
+function actualizarVistaPrevia() {
+  contador.textContent = contenido.value.length;
+  vistaPrevia.textContent = `${titulo.value || "Sin título"} — ` +
+    `${autor.value || "..."} (${tipo.value})`;
+}
+ 
+[titulo, autor, contenido, tipo]
+  .forEach(control => control.addEventListener("input", actualizarVistaPrevia))
