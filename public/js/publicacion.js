@@ -6,6 +6,7 @@ export class Publicacion{
         this.autor = autor
         this.fechaPublicacion = new Date()
         this.activa = true
+        this.etiquetas = []
     }
     get resumen(){
         return `Autor:${this.autor} - Titulo:${this.titulo} - Estado:${this.activa}`
@@ -24,5 +25,20 @@ export class Publicacion{
     darDeBaja() { this.activa = false; }
     destacar(){
         
+    }
+
+    agregarEtiqueta(etiqueta){
+        const normalizada = etiqueta.trim();
+        if (!normalizada) {
+        throw new Error("Etiqueta inválida");
+        }
+        const yaExiste = this.tieneEtiqueta(normalizada);
+        if (!yaExiste) {
+        this.etiquetas.push(normalizada);
+        }
+    }
+    tieneEtiqueta(etiqueta) {
+    const buscada = etiqueta.trim().toLowerCase();
+    return this.etiquetas.some(e => e.toLowerCase() === buscada);
     }
 }

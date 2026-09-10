@@ -9,7 +9,7 @@ export class PublicacionVenta extends Publicacion{
     }
     mostrarResumenVenta(){
         super.mostrarResumen()
-        return `Precio:${this.precio}`
+        return `$${this.precio}`
     }
     
 

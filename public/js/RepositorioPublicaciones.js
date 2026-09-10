@@ -29,5 +29,11 @@ export class RepositorioPublicaciones extends EventEmitter{
     filtrarPorTipo(clase){
         return this.publicaciones.filter(publicacion => publicacion instanceof clase)
     }
+
+    buscarPorEtiqueta(etiqueta) {
+    return this.publicaciones.filter(publicacion =>
+      publicacion.activa && publicacion.tieneEtiqueta(etiqueta)
+    );
+    }
 }
 

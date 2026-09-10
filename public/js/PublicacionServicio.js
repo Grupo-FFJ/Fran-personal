@@ -9,6 +9,6 @@ export class PublicacionServicio extends Publicacion{
     }
     mostrarResumenServicio(){
         super.mostrarResumen()
-        return `Modalidad:${this.modalidad} Duracion:${this.duracion}`
+        return `Modalidad: ${this.modalidad} Duracion: ${this.duracion}`
     }
 }
