@@ -1,7 +1,7 @@
-import { GestorNotificaciones } from "../public/js/GestorNotificaciones.js";
-import { NotificadorWeb } from "../public/js/NotificadorWeb.js";
-import { NotificadorEmail } from "../public/js/NotificadorEmail.js";
-import { Publicacion } from "../public/js/publicacion.js";
+import { GestorNotificaciones } from "../src/GestorNotificaciones.js";
+import { NotificadorWeb } from "../src/NotificadorWeb.js";
+import { NotificadorEmail } from "../src/NotificadorEmail.js";
+import { Publicacion } from "../src/publicacion.js";
 
 test.each([
 [new NotificadorWeb(), "Notificación web: Tu publicación fue aprobada"],
