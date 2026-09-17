@@ -13,6 +13,7 @@ const ayudaEmail = document.getElementById("ayuda-email")
 const email = document.getElementById("email")
 const formulario = document.getElementById("formulario")
 const lista = document.getElementById("lista-publicaciones")
+const salida = document.getElementById("salida")
 
 function observarEvento(evento) {
   console.table({
@@ -103,16 +104,16 @@ function agregarTarjeta(publicacion){
   lista.appendChild(tarjeta)
 }
 
-function manejarEnvio(evento) {
-  evento.preventDefault();
-  const publicacion = crearPublicacionDesdeFormulario();
-  publicaciones.push(publicacion);
-  agregarTarjeta(publicacion);
-  formulario.reset();
-  actualizarCamposEspecificos();
-  actualizarVistaPrevia();
-}
-formulario.addEventListener("submit", manejarEnvio);
+// function manejarEnvio(evento) {
+//   evento.preventDefault();
+//   const publicacion = crearPublicacionDesdeFormulario();
+//   publicaciones.push(publicacion);
+//   agregarTarjeta(publicacion);
+//   formulario.reset();
+//   actualizarCamposEspecificos();
+//   actualizarVistaPrevia();
+// }
+// formulario.addEventListener("submit", manejarEnvio);
 
 
 
@@ -179,3 +180,17 @@ function actualizarVistaPrevia() {
  
 [titulo, autor, contenido, tipo]
   .forEach(control => control.addEventListener("input", actualizarVistaPrevia))
+
+
+//TP 16 PARTE 4
+formulario.addEventListener("submit", async (evento)=>{
+  evento.preventDefault()
+  const respuesta = await fetch(formulario.accion, {
+    method: formulario.method,
+    headers: {"Content-Type": "application/x-www-form-url-urlencoded"},
+    body: new URLSearchParams(new FormData(formulario))
+  })
+  salida.textContent = await respuesta.text()
+  salida.dataset.tipo = respuesta.ok ? "exito" : "error"
+  if (respuesta.ok) formulario.reset()
+})

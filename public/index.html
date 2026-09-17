@@ -7,26 +7,31 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <form id="formulario">
-        <label for="titulo">Titulo <input id="titulo" placeholder="Título" required></label>
+    <form id="formulario" method="post" action="/publicaciones">
+        <label for="titulo">Titulo <input name="titulo" id="titulo" placeholder="Título" required></label>
         <span id="errorTitulo"></span>
         <br><br>
-        <textarea id="descripcion" placeholder="Descripción"></textarea>
+        <textarea name="descripcion" id="descripcion" placeholder="Descripción"></textarea>
         <br><br>
-        <label for="autor">Autor <input id="autor" placeholder="Nombre del autor" required></label>
+        <label for="autor">Autor <input name="autor" id="autor" placeholder="Nombre del autor" required></label>
         <br><br>
         <label for="email">Email <input id="email" type="email" placeholder="Email" required><small id="ayuda-email"></small></label>
         <br><br>
         <label for="tipo">Tipo publicacion</label>
-        <select id="tipo">
+        <select id="tipo" name="categoria">
             <option value="venta">Venta</option>
             <option value="servicio">Servicio</option>
+            <option value="general">General</option>
+            <option value="aviso">Aviso</option>
+            <option value="evento">Evento</option>
+            <option value="compraventa">Compra-venta</option>
         </select>
         <br><br>
         <div id="campos-especificos"></div>
         <br><br>
         <button type="submit">Publicar</button>
     </form>
+    <p id="salida"></p>
     <output id="vista-previa"></output>
     <section id="lista-publicaciones"></section>
     <script type="module" src="./js/main.js"></script>

@@ -1,9 +1,28 @@
 import { Usuario } from "./Usuario.js"
+
+export const CATEGORIAS_PERMITIDAS = ["general","aviso","evento","compraventa"]
+
 export class Publicacion{
-    constructor(titulo, descripcion, autor){
-        this.titulo = titulo
-        this.descripcion = descripcion
-        this.autor = autor
+    constructor(titulo, descripcion, autor, categoria = "general"){
+        if(!autor?.trim()){
+            throw new Error("El autor es obligatorio")
+        }
+        const tituloNormalizado = titulo?.trim() ?? ""
+        if(tituloNormalizado.length < 5 || tituloNormalizado.length > 80){
+            throw new Error("El titulo debe tener entre 5 y 80 caracteres")
+
+        }
+        const descripcionNormalizado = descripcion?.trim() ?? ""
+        if(descripcionNormalizado.length < 20 || descripcionNormalizado.length > 500){
+            throw new Error("La descripcion debe tener entre 20 y 500 caracteres")
+        }
+        if(!CATEGORIAS_PERMITIDAS.includes(categoria)){
+            throw new Error(`La categoria debe ser una de: ${CATEGORIAS_PERMITIDAS.join("")}`)
+        }
+        this.titulo = tituloNormalizado
+        this.descripcion = descripcionNormalizado
+        this.autor = autor.trim()
+        this.categoria = categoria
         this.fechaPublicacion = new Date()
         this.activa = true
         this.etiquetas = []
